@@ -1,0 +1,34 @@
+# rolling dice game
+import random
+
+print("Welcome To rolling Dice game!! ")
+
+def play_game():
+    total_score=0
+    total_rolls=0
+    while True:
+        choices=(1,2,3,4,5,6)
+        play=input("Roll the dice (y/n):").lower()
+        if play== 'y':
+            num_dice=int(input("How many dice you want to roll?(1-6):"))
+            if num_dice not in range(1,7):
+                print("Please choose between 1-6 :")
+                continue
+            dice_rolls=[random.choice(choices) for _ in range(num_dice)]
+            total_score+=sum(dice_rolls)
+            total_rolls+=1
+            print(f"Dice rolled:{(' '.join(map(str,dice_rolls)))}")
+            print(f"Current score:{total_score}")
+        elif play == 'n':
+            print(f"Total score:{total_score}\n Total rolls:{total_rolls}")
+            print("Thanks for playing!")
+            break
+        
+        elif play not in ('y','n'):
+            print("Please enter valid choice!")
+        
+        
+play_game()
+
+
+
